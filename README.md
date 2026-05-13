@@ -1,5 +1,5 @@
 # appunti
 Questo è il mio primo file
-> <!info>
-> ciao
+> [!NOTE]
+> Questa è un'informazione utile che voglio mettere in evidenza nel capitolo.
 
