@@ -1,0 +1,25 @@
+name: Prima Action
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  saluta:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v4
+
+      - name: Mostra un messaggio
+        run: echo "Ciao, questa e' la mia prima GitHub Action"
+
+      - name: Mostra i file del repository
+        run: ls
+
+      - name: Mostra informazioni sull'esecuzione
+        run: |
+          echo "Workflow: $GITHUB_WORKFLOW"
+          echo "Branch: $GITHUB_REF_NAME"
+          echo "Utente: $GITHUB_ACTOR"
