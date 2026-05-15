@@ -5,6 +5,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      nome:
+        description: "Nome da salutare"
+        required: true
+        default: "Leonardo"
+
 
 
 jobs:
