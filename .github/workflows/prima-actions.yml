@@ -23,3 +23,9 @@ jobs:
           echo "Workflow: $GITHUB_WORKFLOW"
           echo "Branch: $GITHUB_REF_NAME"
           echo "Utente: $GITHUB_ACTOR"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Evento che ha avviato la Action: $GITHUB_EVENT_NAME"
+          echo "Sistema operativo del runner:"
+          uname -a
+          echo "Cartella corrente:"
+          pwd
