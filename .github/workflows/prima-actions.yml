@@ -15,6 +15,13 @@ jobs:
       - name: Mostra un messaggio
         run: echo "Ciao, questa e' la mia prima GitHub Action"
 
+      - name: Fallisci apposta
+        run: exit 1
+
+      - name: Mostra i file del repository
+        run: ls
+
+
       - name: Mostra i file del repository
         run: ls
 
