@@ -2,7 +2,10 @@ name: Prima Action
 
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
+
 
 jobs:
   saluta:
