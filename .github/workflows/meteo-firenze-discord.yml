@@ -3,7 +3,7 @@ name: Meteo Firenze su Discord
 on:
   workflow_dispatch:
   schedule:
-    - cron: "31 8 * * *"
+    - cron: "25 8 * * *"
 
 jobs:
   meteo-firenze:
@@ -81,21 +81,15 @@ jobs:
 
           payload = json.dumps({"content": messaggio}).encode("utf-8")
 
-         payload = json.dumps({"content": messaggio}).encode("utf-8")
-
-         request = urllib.request.Request(
-             webhook_url,
-             data=payload,
-             headers={
-                "Content-Type": "application/json",
-                "User-Agent": "GitHubActions-MeteoFirenze/1.0",
-             },
-             method="POST",
+          request = urllib.request.Request(
+              webhook_url,
+              data=payload,
+              headers={
+                  "Content-Type": "application/json",
+                  "User-Agent": "GitHubActions-MeteoFirenze/1.0",
+              },
+              method="POST",
           )
-
-with urllib.request.urlopen(request) as response:
-    response.read()
-
 
           with urllib.request.urlopen(request) as response:
               response.read()
