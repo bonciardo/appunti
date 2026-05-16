@@ -1,0 +1,16 @@
+name: Saluto programmato
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 10 * * *"
+      timezone: "Europe/Rome"
+
+jobs:
+  saluto:
+    runs-on: ubuntu-latest
+    permissions: {}
+
+    steps:
+      - name: Scrivi un saluto
+        run: echo "Ciao Leonardo, buon giorno! Sono le 10:20 in Italia."
