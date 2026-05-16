@@ -1,0 +1,16 @@
+# Obsidian local workspace state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian transient/cache files
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+
+# Operating system files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
