@@ -81,12 +81,21 @@ jobs:
 
           payload = json.dumps({"content": messaggio}).encode("utf-8")
 
-          request = urllib.request.Request(
-              webhook_url,
-              data=payload,
-              headers={"Content-Type": "application/json"},
-              method="POST",
+         payload = json.dumps({"content": messaggio}).encode("utf-8")
+
+         request = urllib.request.Request(
+             webhook_url,
+             data=payload,
+             headers={
+                "Content-Type": "application/json",
+                "User-Agent": "GitHubActions-MeteoFirenze/1.0",
+             },
+             method="POST",
           )
+
+with urllib.request.urlopen(request) as response:
+    response.read()
+
 
           with urllib.request.urlopen(request) as response:
               response.read()
