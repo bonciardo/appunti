@@ -1,0 +1,94 @@
+name: Meteo Firenze su Discord
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 10 * * *"
+      timezone: "Europe/Rome"
+
+jobs:
+  meteo-firenze:
+    runs-on: ubuntu-latest
+    permissions: {}
+
+    steps:
+      - name: Invia previsioni meteo su Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          webhook_url = os.environ["DISCORD_WEBHOOK_URL"]
+
+          weather_codes = {
+              0: "sereno",
+              1: "prevalentemente sereno",
+              2: "parzialmente nuvoloso",
+              3: "coperto",
+              45: "nebbia",
+              48: "nebbia con brina",
+              51: "pioviggine leggera",
+              53: "pioviggine moderata",
+              55: "pioviggine intensa",
+              61: "pioggia leggera",
+              63: "pioggia moderata",
+              65: "pioggia intensa",
+              80: "rovesci leggeri",
+              81: "rovesci moderati",
+              82: "rovesci forti",
+              95: "temporale",
+              96: "temporale con grandine leggera",
+              99: "temporale con grandine forte",
+          }
+
+          params = {
+              "latitude": 43.7696,
+              "longitude": 11.2558,
+              "daily": ",".join([
+                  "weather_code",
+                  "temperature_2m_max",
+                  "temperature_2m_min",
+                  "precipitation_probability_max",
+                  "precipitation_sum",
+                  "wind_speed_10m_max",
+              ]),
+              "timezone": "Europe/Rome",
+              "forecast_days": 1,
+          }
+
+          meteo_url = "https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(params)
+
+          with urllib.request.urlopen(meteo_url) as response:
+              data = json.loads(response.read().decode("utf-8"))
+
+          daily = data["daily"]
+          giorno = daily["time"][0]
+          codice = daily["weather_code"][0]
+          descrizione = weather_codes.get(codice, f"codice meteo {codice}")
+
+          messaggio = (
+              f"Previsioni meteo per Firenze, {giorno}\n\n"
+              f"Condizioni: {descrizione}\n"
+              f"Temperatura minima: {daily['temperature_2m_min'][0]} °C\n"
+              f"Temperatura massima: {daily['temperature_2m_max'][0]} °C\n"
+              f"Probabilità massima di pioggia: {daily['precipitation_probability_max'][0]}%\n"
+              f"Pioggia prevista: {daily['precipitation_sum'][0]} mm\n"
+              f"Vento massimo: {daily['wind_speed_10m_max'][0]} km/h"
+          )
+
+          payload = json.dumps({"content": messaggio}).encode("utf-8")
+
+          request = urllib.request.Request(
+              webhook_url,
+              data=payload,
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+
+          with urllib.request.urlopen(request) as response:
+              response.read()
+          PY
