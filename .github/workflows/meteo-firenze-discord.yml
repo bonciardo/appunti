@@ -3,8 +3,7 @@ name: Meteo Firenze su Discord
 on:
   workflow_dispatch:
   schedule:
-    - cron: "25 10 * * *"
-      timezone: "Europe/Rome"
+    - cron: "31 8 * * *"
 
 jobs:
   meteo-firenze:
