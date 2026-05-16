@@ -2,7 +2,7 @@ name: Saluto programmato
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: '*/5 * * * *'
 
 jobs:
   saluto:
