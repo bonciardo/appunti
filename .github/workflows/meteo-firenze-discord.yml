@@ -2,8 +2,6 @@ name: Meteo Firenze su Discord
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "25 8 * * *"
 
 jobs:
   meteo-firenze:
