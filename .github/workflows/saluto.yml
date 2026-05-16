@@ -3,7 +3,7 @@ name: Saluto programmato
 on:
   workflow_dispatch:
   schedule:
-    - cron: "29 8 * * *"
+    - cron: "39 10 * * *"
 
 jobs:
   saluto:
