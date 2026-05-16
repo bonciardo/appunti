@@ -3,13 +3,12 @@ name: Saluto programmato
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: "45 9 * * *"
 
 jobs:
   saluto:
     runs-on: ubuntu-latest
     permissions: {}
-
     steps:
       - name: Scrivi un saluto
-        run: echo "Ciao Leonardo, buon giorno! Sono le 10:20 in Italia."
+        run: echo "Ciao Leonardo, buon giorno! Sono le 10:29 in Italia."
