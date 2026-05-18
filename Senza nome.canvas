@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"858f873983a4bb16","x":20,"y":-290,"width":89,"height":60,"color":"3","type":"text","text":"IDEA!"},
+		{"id":"b07f63f77d5801a7","x":-600,"y":-460,"width":400,"height":400,"color":"6","type":"file","file":"PRIN-2026.md"}
+	],
+	"edges":[
+		{"id":"d71d65dacf2c0821","fromNode":"b07f63f77d5801a7","fromSide":"right","toNode":"858f873983a4bb16","toSide":"left"}
+	]
+}
