@@ -1,0 +1,47 @@
+/* @settings
+name: Colori grassetto e corsivo
+id: bold-italic-colors
+settings:
+  -
+    id: lb-bold-color
+    title: Colore del grassetto
+    type: variable-color
+    format: hex
+    default: '#c2410c'
+  -
+    id: lb-italic-color
+    title: Colore del corsivo
+    type: variable-color
+    format: hex
+    default: '#2563eb'
+  -
+    id: lb-bold-italic-color
+    title: Colore di grassetto piu corsivo
+    type: variable-color
+    format: hex
+    default: '#7c3aed'
+*/
+
+body {
+  --lb-bold-color: #c2410c;
+  --lb-italic-color: #2563eb;
+  --lb-bold-italic-color: #7c3aed;
+  --bold-color: var(--lb-bold-color);
+  --italic-color: var(--lb-italic-color);
+}
+
+.markdown-rendered strong,
+.markdown-source-view.mod-cm6 .cm-strong {
+  color: var(--lb-bold-color);
+}
+
+.markdown-rendered em,
+.markdown-source-view.mod-cm6 .cm-em {
+  color: var(--lb-italic-color);
+}
+
+.markdown-rendered strong em,
+.markdown-rendered em strong,
+.markdown-source-view.mod-cm6 .cm-strong.cm-em {
+  color: var(--lb-bold-italic-color);
+}

@@ -5,3 +5,13 @@ Questo è il mio primo file
 
 > [!TIP]
 > Un piccolo consiglio utile per chi legge.
+
+personal and social norms
+
+norms in the HD game
+--> control
+personal norms predict behaviors
+social norms do not predict behaviors
+
+1. out-of-sample
+2. another experiment
